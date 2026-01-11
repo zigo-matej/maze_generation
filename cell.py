@@ -8,6 +8,10 @@ class Cell:
     visited: bool
 
     def __init__(self, x, y, cell_size):
+        self.i = x
+        self.j = y
+        self.start = False
+        self.end = False
         self.x = x * cell_size
         self.y = y * cell_size
         self.S_wall = True
