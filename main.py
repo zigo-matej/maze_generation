@@ -1,5 +1,8 @@
+import time
+
 from cell import Cell
 from recurcive_backtracker import  backtrack_recursively
+from prim_algorithm import prim
 
 cells_n: int = None
 cell_size: int
@@ -16,6 +19,9 @@ def init_grid():
     while cells_n is None or cells_n <= 1:
         try:
             cells_n = int(input())
+            if cells_n <= 1:
+                print("Invalid input. Enter a number > 1.")
+                cells_n = None
         except ValueError:
             print("Invalid input. Enter a number > 1.")
     cell_size = WIDTH / cells_n
@@ -28,6 +34,7 @@ if __name__ == "__main__":
 
     print("\nChoose an algorithm for maze generation:"
           "\n1. Recursive Backtracker"
+          "\n2. Randomized Prim's Algorithm"
           )
 
     algorithm_choice = None
@@ -37,8 +44,15 @@ if __name__ == "__main__":
        except ValueError:
             print("Invalid input. Enter a number.")
 
+    start_time = time.time()
+
     if algorithm_choice == 1:
         backtrack_recursively(grid, cell_size)
+    elif algorithm_choice == 2:
+        prim(grid, cell_size)
     else:
         print("Invalid algorithm choice.")
 
+    end_time = time.time()
+
+    print(f"\nTime elapsed: {end_time - start_time:.2f} seconds")

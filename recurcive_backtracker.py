@@ -46,17 +46,17 @@ def backtrack_recursively(grid, cell_size):
     grid[-1][-1].end = True
 
     while cells_stack:
-        current_cell = cells_stack.pop()
+        current_cell = cells_stack.pop()#select cell from the top of the stack
         neighbors_list = neighbors(grid, current_cell)
         unvisited_neighbors_list = [neighbor for neighbor in neighbors_list if neighbor.visited == False]
-        if unvisited_neighbors_list:
-            cells_stack.append(current_cell)
+        if unvisited_neighbors_list:#if the cell has unvisited neighbors
+            cells_stack.append(current_cell)#push the current cell back to the stack
 
-            next_cell = random.choice(unvisited_neighbors_list)
-            remove_wall(current_cell, next_cell)
+            next_cell = random.choice(unvisited_neighbors_list)#choose a random unvisited neighbor cell
+            remove_wall(current_cell, next_cell)#remove wall between the two cells
             next_cell.visited = True
 
-            cells_stack.append(next_cell)
+            cells_stack.append(next_cell)#add the chosen cell to the stack
             visualize_grid(grid, cell_size)
 
 

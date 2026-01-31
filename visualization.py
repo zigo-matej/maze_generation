@@ -44,9 +44,9 @@ def visualize_grid(grid, cell_size):
     plt.gca().set_aspect('equal', adjustable='box')#make the graph square
     plt.gca().axis('off')#remove axis
 
-    plt.draw()
+    #plt.draw()
     if not final:
-        plt.pause(0.001)
+        plt.pause(0.00001)
         plt.show(block=False)
     else:
         plt.show()
